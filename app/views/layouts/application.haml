@@ -1,0 +1,15 @@
+!!!html
+%html
+  %head
+    %title PracticeAppPokemon
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %nav
+      -if current_user
+        ="Current User: #{current_user.full_name}"
+        ="Sign Out"
+    -if notice
+      =notice
+    = yield
