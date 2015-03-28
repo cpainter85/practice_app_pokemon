@@ -9,7 +9,7 @@
     %nav
       -if current_user
         ="Current User: #{current_user.full_name}"
-        ="Sign Out"
+        =link_to "Sign Out", sign_out_path
     -if notice
       =notice
     = yield
