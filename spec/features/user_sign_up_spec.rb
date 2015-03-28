@@ -19,7 +19,7 @@ feature 'User can signup' do
     fill_in 'Password confirmation', with: 'Heisenberg'
     click_button 'Sign Up'
 
-    expect(current_path).to eq dashboard_path
+    expect(current_path).to eq pokedex_path
     expect(page).to have_content 'You have successfully signed up!'
     expect(page).to have_content 'Current User: Walter White'
     expect(page).to have_content 'Sign Out'

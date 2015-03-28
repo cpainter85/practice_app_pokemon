@@ -7,7 +7,7 @@ class AuthenticationController < ApplicationController
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to dashboard_path, notice: 'You have successfully signed in!'
+      redirect_to pokedex_path, notice: 'You have successfully signed in!'
     else
       flash[:notice] = 'Invalid User/Password combination'
       render :new

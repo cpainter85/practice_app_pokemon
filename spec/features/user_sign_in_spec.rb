@@ -13,7 +13,7 @@ feature 'User sign in' do
     fill_in 'Password', with: user.password
     click_button 'Sign In'
 
-    expect(current_path).to eq dashboard_path
+    expect(current_path).to eq pokedex_path
     expect(page).to have_content 'You have successfully signed in!'
     expect(page).to have_content 'Current User: Rick Grimes'
     expect(page).to have_content 'Sign Out'

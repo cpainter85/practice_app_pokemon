@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
-  get 'dashboard', to: 'dashboard#index'
+  get 'pokedex', to: 'pokedex#index'
 
   get 'sign-up', to: 'registrations#new'
   post 'sign-up', to: 'registrations#create'
