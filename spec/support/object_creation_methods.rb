@@ -6,3 +6,10 @@ def create_user(overrides = {})
     password: 'Karl!'
   }.merge(overrides))
 end
+
+def create_pokemon(overrides ={})
+  Pokemon.create!({
+    name: 'Charmander',
+    species: 'Lizard'
+  }.merge(overrides))
+end
