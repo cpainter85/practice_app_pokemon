@@ -4,7 +4,7 @@ feature 'User sign out' do
   scenario 'User can sign out' do
     user = create_user
     user_sign_in(user)
-    visit dashboard_path
+    visit pokedex_path
     expect(page).to have_content 'Current User: Rick Grimes'
 
     click_link 'Sign Out'
