@@ -60,4 +60,21 @@ feature 'Users can CRUD Pokemon' do
     expect(find_link('Edit')[:href]).to eq(edit_pokemon_path(@pokemon))
     expect(find_link('Delete')[:href]).to eq(pokemon_path(@pokemon))
   end
+
+  scenario 'User can update a Pokemon with valid information' do
+    user_sign_in(@user)
+    visit pokemon_path(@pokemon)
+    click_link 'Edit'
+    expect(current_path).to eq edit_pokemon_path(@pokemon)
+    expect(page).to have_content 'Edit Pokemon Information in Pokedex'
+
+    fill_in 'Name', with: 'Charmeleon'
+    fill_in 'Species', with: 'Flame'
+    click_on 'Update Pokemon'
+
+    expect(current_path).to eq pokemon_path(@pokemon)
+    expect(page).to have_content 'Updated Pokemon information!'
+    expect(page).to have_content 'Pokemon Name: Charmeleon'
+    expect(page).to have_content 'Species: Flame Pokemon'
+  end
 end
