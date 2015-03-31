@@ -29,6 +29,12 @@ class PokemonsController < ApplicationController
     end
   end
 
+  def destroy
+    pokemon = Pokemon.find(params[:id])
+    pokemon.destroy
+    redirect_to pokedex_path, notice: "#{pokemon.name} has been removed from the Pokedex"
+  end
+
   private
 
   def pokemon_params
