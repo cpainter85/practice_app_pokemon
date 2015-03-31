@@ -58,7 +58,7 @@ feature 'Users can CRUD Pokemon' do
     expect(page).to have_content 'Species: Lizard Pokemon'
     expect(find_link('Return to Pokedex')[:href]).to eq(pokedex_path)
     expect(find_link('Edit')[:href]).to eq(edit_pokemon_path(@pokemon))
-    expect(find_link('Delete')[:href]).to eq(pokemon_path(@pokemon))
+    expect(find_link('Remove from Pokedex')[:href]).to eq(pokemon_path(@pokemon))
   end
 
   scenario 'User can update a Pokemon with valid information' do
@@ -76,5 +76,15 @@ feature 'Users can CRUD Pokemon' do
     expect(page).to have_content 'Updated Pokemon information!'
     expect(page).to have_content 'Pokemon Name: Charmeleon'
     expect(page).to have_content 'Species: Flame Pokemon'
+  end
+
+  scenario 'User can delete a Pokemon' do
+    visit pokemon_path(@pokemon)
+    click_link 'Remove from Pokedex'
+    expect(current_path).to eq pokedex_path
+    expect(page).to have_content "#{@pokemon.name} has been removed from the Pokedex"
+
+    expect { @pokemon.reload }.to raise_error ActiveRecord::RecordNotFound
+
   end
 end
