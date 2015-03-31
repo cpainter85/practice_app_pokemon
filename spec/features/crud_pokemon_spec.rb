@@ -6,10 +6,11 @@ feature 'Users can CRUD Pokemon' do
     @pokemon = create_pokemon
     @pokemon2 = create_pokemon(name: 'Tepig', species: 'Fire Pig')
     @user = create_user
+    user_sign_in(@user)
   end
 
   scenario 'Pokedex displays index of all pokemon' do
-    user_sign_in(@user)
+
     visit pokedex_path
 
     expect(page).to have_content 'List of Pokemon in our Pokedex'
@@ -19,7 +20,7 @@ feature 'Users can CRUD Pokemon' do
   end
 
   scenario 'user can add a new pokemon with valid information' do
-    user_sign_in(@user)
+
     visit pokedex_path
     click_link 'Add a new Pokemon to Pokedex'
 
@@ -36,7 +37,7 @@ feature 'Users can CRUD Pokemon' do
   end
 
   scenario 'user cannot add a new pokemon with invalid information' do
-    user_sign_in(@user)
+
     visit pokedex_path
     click_link 'Add a new Pokemon to Pokedex'
 
@@ -48,7 +49,7 @@ feature 'Users can CRUD Pokemon' do
   end
 
   scenario 'User can see a show page for a pokemon' do
-    user_sign_in(@user)
+
     visit pokedex_path
 
     click_link 'Charmander - Lizard Pokemon'
@@ -62,7 +63,7 @@ feature 'Users can CRUD Pokemon' do
   end
 
   scenario 'User can update a Pokemon with valid information' do
-    user_sign_in(@user)
+
     visit pokemon_path(@pokemon)
     click_link 'Edit'
     expect(current_path).to eq edit_pokemon_path(@pokemon)
@@ -80,6 +81,7 @@ feature 'Users can CRUD Pokemon' do
 
   scenario 'User can delete a Pokemon' do
     visit pokemon_path(@pokemon)
+
     click_link 'Remove from Pokedex'
     expect(current_path).to eq pokedex_path
     expect(page).to have_content "#{@pokemon.name} has been removed from the Pokedex"
@@ -87,4 +89,17 @@ feature 'Users can CRUD Pokemon' do
     expect { @pokemon.reload }.to raise_error ActiveRecord::RecordNotFound
 
   end
+end
+
+feature 'Unauthenticated users cannot CRUD pokemon' do
+  scenario 'attempt to CRUD pokemon by an unauthenticated user renders 404' do
+    pokemon = create_pokemon
+
+    paths = [pokedex_path, new_pokemon_path, pokemon_path(pokemon), edit_pokemon_path(pokemon)]
+    paths.each do |path|
+      visit path
+      expect(page.status_code).to eq(404)
+    end
+  end
+
 end
