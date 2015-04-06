@@ -7,5 +7,5 @@
 
 %h3="List of #{@trainer.name}'s Pet Pokemon"
 -@trainer.pets.each do |pet|
-  ="#{pet.name} - a Level #{pet.experience_level} #{pet.pokemon.name}"
+  =link_to "#{pet.name} - a Level #{pet.experience_level} #{pet.pokemon.name}", trainer_pet_path(@trainer, pet)
 =link_to "Add a new Pet Pokemon to #{@trainer.name}'s team", new_trainer_pet_path(@trainer)
