@@ -5,8 +5,7 @@ feature 'Users can CRUD Pokemon' do
   before :each do
     @pokemon = create_pokemon
     @pokemon2 = create_pokemon(name: 'Tepig', species: 'Fire Pig')
-    @user = create_user
-    user_sign_in(@user)
+    user_sign_in(create_user)
   end
 
   scenario 'Pokedex displays index of all pokemon' do
