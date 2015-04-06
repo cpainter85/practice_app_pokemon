@@ -1,4 +1,6 @@
 class Trainer < ActiveRecord::Base
+  has_many :pets
+
   validates :name, presence: true, length: {minimum: 3}
   validates :country_of_origin, presence: true
   validates :date_of_birth, presence: true
