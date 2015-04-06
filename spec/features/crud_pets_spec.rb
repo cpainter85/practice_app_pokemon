@@ -45,7 +45,7 @@ feature 'Users can CRUD Pets' do
     expect(page).to have_content "#{@trainer.name}'s #{@pet.pokemon.name}"
     expect(page).to have_content "Name: #{@pet.name}"
     expect(page).to have_content "Experience Level: #{@pet.experience_level}"
-    expect(find_link("Return to #{@trainer.name}'s Main Page'")[:href]).to eq(trainer_path(@trainer))
+    expect(find_link("Return to #{@trainer.name}'s Main Page")[:href]).to eq(trainer_path(@trainer))
     expect(find_link('Edit')[:href]).to eq(edit_trainer_pet_path(@trainer, @pet))
     expect(find_link('Remove this Pokemon')[:href]).to eq(trainer_pet_path(@trainer, @pet))
   end
@@ -60,7 +60,7 @@ feature 'Users can CRUD Pets' do
     select('Charmeleon', from: 'Pokemon')
     fill_in 'Name', with: 'Torch'
     fill_in 'Experience level', with: 20
-    click_on 'Update Pokemon'
+    click_on 'Update Pet'
 
     expect(current_path).to eq trainer_pet_path(@trainer, @pet)
     expect(page).to have_content "Updated #{@trainer.name}'s Charmeleon Torch!"
