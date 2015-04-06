@@ -21,3 +21,12 @@ def create_trainer(overrides ={})
     date_of_birth: '1982-02-08'
   }.merge(overrides))
 end
+
+def create_pet(trainer, pokemon, overrides ={})
+  Pet.create!({
+    trainer_id: trainer.id,
+    pokemon_id: pokemon.id,
+    name: 'Blaze',
+    experience_level: 15
+  }.merge(overrides))
+end
