@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   get 'sign-out', to: 'authentication#destroy'
 
   resources :pokemons, except: [:index]
-  resources :trainers, expect: [:index]
+  resources :trainers, expect: [:index] do
+    resources :pets, only: [:new, :create]
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -4,3 +4,8 @@
 =link_to 'Return to Pokedex', pokedex_path
 =link_to 'Edit', edit_trainer_path(@trainer)
 =link_to 'Remove from Pokedex', trainer_path(@trainer), method: :delete
+
+%h3="List of #{@trainer.name}'s Pet Pokemon"
+-@trainer.pets.each do |pet|
+  ="#{pet.name} - a Level #{pet.experience_level} #{pet.pokemon.name}"
+=link_to "Add a new Pet Pokemon to #{@trainer.name}'s team", new_trainer_pet_path(@trainer)
