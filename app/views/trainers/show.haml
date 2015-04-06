@@ -1,0 +1,6 @@
+="Name: #{@trainer.name}"
+="Country of Origin: #{@trainer.country_of_origin}"
+="Date of birth: #{@trainer.date_of_birth.strftime("%m/%d/%Y")}"
+=link_to 'Return to Pokedex', pokedex_path
+=link_to 'Edit', edit_trainer_path(@trainer)
+=link_to 'Remove from Pokedex', trainer_path(@trainer), method: :delete

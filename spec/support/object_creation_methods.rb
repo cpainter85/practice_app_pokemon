@@ -18,6 +18,6 @@ def create_trainer(overrides ={})
   Trainer.create!({
     name: 'Spartacus',
     country_of_origin: 'Thrace',
-    date_of_birth: '02/08/1982'
+    date_of_birth: '1982-02-08'
   }.merge(overrides))
 end
