@@ -13,3 +13,11 @@ def create_pokemon(overrides ={})
     species: 'Lizard'
   }.merge(overrides))
 end
+
+def create_trainer(overrides ={})
+  Trainer.create!({
+    name: 'Spartacus',
+    country_of_origin: 'Thrace',
+    date_of_birth: '02/08/1982'
+  }.merge(overrides))
+end
