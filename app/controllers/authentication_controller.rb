@@ -12,4 +12,9 @@ class AuthenticationController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    session.clear
+    redirect_to root_path, notice: 'You have successfully signed out!'
+  end
 end
