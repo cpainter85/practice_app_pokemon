@@ -2,3 +2,8 @@
 =link_to 'Add a new Pokemon to Pokedex', new_pokemon_path
 -@pokemons.each do |pokemon|
   =link_to "#{pokemon.name} - #{pokemon.species} Pokemon", pokemon_path(pokemon)
+
+%h1 List of Pokemon Trainers
+=link_to "Add a new Pokemon Trainer to Pokedex", new_trainer_path
+-@trainers.each do |trainer|
+  =link_to "#{trainer.name} of #{trainer.country_of_origin}", trainer_path(trainer)
