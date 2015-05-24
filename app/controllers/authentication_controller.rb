@@ -1,4 +1,6 @@
 class AuthenticationController < ApplicationController
+  skip_before_action :ensure_authenticated_user
+  
   def new
 
   end

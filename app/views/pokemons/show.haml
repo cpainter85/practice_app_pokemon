@@ -1,0 +1,5 @@
+="Pokemon Name: #{@pokemon.name}"
+="Species: #{@pokemon.species} Pokemon"
+=link_to 'Return to Pokedex', pokedex_path
+=link_to 'Edit', edit_pokemon_path(@pokemon)
+=link_to 'Remove from Pokedex', pokemon_path(@pokemon), method: :delete
