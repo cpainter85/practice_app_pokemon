@@ -1,0 +1,6 @@
+="#{@trainer.name}'s #{@pet.pokemon.name}"
+="Name: #{@pet.name}"
+="Experience Level: #{@pet.experience_level}"
+=link_to "Return to #{@trainer.name}'s Main Page", trainer_path(@trainer)
+=link_to 'Edit', edit_trainer_pet_path(@trainer, @pet)
+=link_to 'Remove this Pokemon', trainer_pet_path(@trainer, @pet), method: :delete

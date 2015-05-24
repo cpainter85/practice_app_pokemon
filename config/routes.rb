@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   get 'pokedex', to: 'pokedex#index'
 
   resources :pokemons, except: [:index]
-  resources :trainers, except: [:index]
+  resources :trainers, except: [:index] do
+    resources :pets, expect: [:index]
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

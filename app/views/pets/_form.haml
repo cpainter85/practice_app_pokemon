@@ -1,0 +1,8 @@
+=form_for [@trainer, @pet] do |f|
+  =f.label :pokemon_id, 'Pokemon'
+  =f.collection_select :pokemon_id, Pokemon.all, :id, :name
+  =f.label :name
+  =f.text_field :name
+  =f.label :experience_level
+  =f.number_field :experience_level
+  =f.submit
